@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js" defer></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" defer></script>
+
+    <title>Title</title>
+</head>
+    <body>
+            
+
+
+            <div class="modal-footer basket-footer">
+                <div>
+                    <div class="form-group">
+                        <label for="usr1">Имя Фамилия:</label>
+                        <input type="text" class="form-control" id="usr1" placeholder="пример: Бишка Парман">
+
+                    </div>
+                        <label for="usr1">Откуда?</label>
+                     <select class="custom-select custom-select-lg mb-3" id="fromTo">
+                          
+                          <option selected>Шымкент</option>
+                          <option value="Алматы">Алматы</option>
+                          <option value="Астана">Астана</option>
+                          <option value="Түркістан">Түркістан</option>
+                    </select>
+
+
+                    <label for="usr1">Куда?</label>
+                    <select class="custom-select custom-select-sm" id="goTo">
+                          
+                          <option selected>Шымкент</option>
+                          <option value="Алматы">Алматы</option>
+                          <option value="Астана">Астана</option>
+                          <option value="Түркістан">Түркістан</option>
+                    </select>
+
+                    <div class="form-group">
+                        <label for="usr2">Номер телефона:</label>
+                        <input type="tel" class="form-control" id="usr2">
+                    </div>
+                </div>
+
+
+
+
+                <div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="text()">Заказать
+                    </button>
+                </div>
+            </div>
+
+
+
+            
+
+
+            <script>
+
+                
+                function text(){
+
+
+                    var fromTo1 = document.getElementById("fromTo")
+                    var fromTo2 = fromTo1.options[fromTo1.selectedIndex].value
+
+                    var goTo1 = document.getElementById("goTo")
+                    var goTo2 = goTo1.options[goTo1.selectedIndex].value
+
+                    var name = document.getElementById('usr1').value
+                    var number = document.getElementById('usr2').value
+
+
+                    var text = "Имя Фамилия: " +name+ " \r \r \r \r \r \r \r \r  Откуда: " +'\n'+fromTo2+'\n'+ "\r \r \r \r \r \r \r \r Куда: "+goTo2+ "\r \r \r \r \r \r \r \r Номер телефона: "+number 
+                    send(text)
+                    
+                }
+
+
+
+                function send(txt) {
+                    var chat_id="-372264135";
+                    var token="739454833:AAFSJEWS5WUOnSTiMqPjPWhUQnFfD8mQe1U";
+                    var request = new XMLHttpRequest();        
+                    request.open('GET', "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"&parse_mode=html&text="+txt+"", true);
+                    request.send(null);
+                    alert("Спасибо!")
+
+                }
+
+            </script>
+
+
+    </body>
+</html>
